@@ -1,0 +1,123 @@
+.footer{
+    padding: pixCon(40, rem) 0;
+    background-color: $darkBlue;
+    text-align: center;
+
+    @include viewportUp(large){
+        display: grid;
+        grid-template-columns: 1.5fr repeat(2, 1fr) 3fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 
+            "logo links-one links-two cta"
+            "social links-one links-two copyright";
+
+        padding: pixCon(45,rem) pixCon(160, rem);
+    }
+
+    &__logo{
+        display: inline-block;
+        margin-bottom: pixCon(30, rem);
+        text-align: left;
+
+        @include viewportUp(large){
+            grid-area: logo;
+
+            margin-bottom: 0;
+        }
+    }
+
+    &__social{
+        margin-bottom: pixCon(30, rem);
+
+        @include viewportUp(large){
+            grid-area: social;
+            
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 0;
+        }
+        
+        a
+        {
+            &:not(:last-child){
+                margin-right: pixCon(12, rem);
+            }
+
+            svg path{
+                transition: fill 150ms ease-in-out;
+            }
+
+            &:hover svg path{
+                fill: $limeGreen;
+            }
+        }
+    }
+
+    &__links{
+        display: flex;
+        flex-direction: column;
+
+        @include viewportUp(large){
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        a{       
+            margin-bottom: pixCon(18, rem);
+            font-size: pixCon(12, rem);
+            color: $white;
+            transition: color 300ms ease-in-out;
+
+            @include viewportUp(large){
+                margin-bottom: 0;
+
+                &:hover{
+                    color: $limeGreen;
+                }
+            }
+        }
+    }
+
+    .links-one{
+        @include viewportUp(large){
+            grid-area: links-one;
+        }
+    }
+
+    .links-two{
+        margin-bottom: pixCon(30, rem); 
+
+        @include viewportUp(large){
+            grid-area: links-two;
+
+            margin-bottom: 0;
+        }
+    }
+
+    &__cta{
+        margin-bottom: pixCon(30, rem);
+
+
+        @include viewportUp(large){
+            grid-area: cta;
+
+            display: flex;
+            justify-self: flex-end;
+            margin-bottom: 0;
+            width: 165px;
+            height: 45px;
+        }
+    }
+
+    &__copyright{
+        font-size: pixCon(12, rem);
+
+        @include viewportUp(large){
+            grid-area: copyright;
+
+            display: flex;
+            justify-self: flex-end;
+            align-items: flex-end;
+        }
+    }
+}

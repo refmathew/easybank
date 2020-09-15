@@ -1,0 +1,58 @@
+.feature
+{
+    padding: pixCon(60, rem) pixCon(30, rem);
+    background-color: $lightGrayishBlue;
+    text-align: center; 
+    
+    @include viewportUp(large)
+    {
+        padding: pixCon(105, rem) pixCon(160, rem);
+        text-align: left;
+    }
+
+    &__intro
+    {
+
+        @include viewportUp(large)
+        {
+            width: 60%;
+            margin-right: 100px;
+        }
+    }
+
+    &__grid
+    {
+        @include viewportUp(medium)
+        {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item
+    {
+        @include viewportUp(medium)
+        {
+            flex: 0 0 50%;  
+        }
+        @media (min-width: pixCon(1159, rem)) //tweaked breakpoint size so feature__title looks better (try setting this to 'viewportUp(large)' to see difference)
+        {
+            flex: 1;
+
+            &:not(:last-child)
+            {
+                padding-right: pixCon(15, rem);
+            }
+        }
+    }
+
+
+    &__icon
+    {
+        padding: pixCon(30, rem) 0;
+    }
+}
+
+
+
+

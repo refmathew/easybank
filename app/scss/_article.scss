@@ -1,0 +1,94 @@
+.articles
+{
+    padding: pixCon(80, rem) pixCon(30, rem);   
+    background-color: $veryLightGray;
+    
+    @include viewportUp(large)
+    {
+        padding: pixCon(80, rem) pixCon(150,rem);
+    }
+}
+
+
+.article
+{
+
+&__intro
+{
+    margin-bottom: pixCon(35,rem);
+    text-align: center;
+
+    @include viewportUp(medium)
+    {
+        margin-bottom: pixCon(45,rem);
+    }
+
+    @include viewportUp(large)
+    {
+        text-align: left;
+    }
+}
+
+&__grid
+{
+    display: grid;
+    grid-template-columns: 1;
+    gap: pixCon(30, rem);
+
+    @include viewportUp(medium)
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: pixCon(1300, rem)) //tweaked breakpoint size so feature__title looks better (try setting this to 'viewportUp(large)' to see difference)
+    {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+    &__item
+    {
+        overflow: hidden;
+        border-radius: pixCon(5, rem);
+        background-color: white;
+        box-shadow: 0 pixCon(3, rem) pixCon(15, rem) rgba(0 ,0 ,0 , 0.15);
+        transition: transform 150ms ease-in-out;
+
+        &:hover{
+            transform: scale(1.03); 
+        }
+    }
+            &__image
+            {
+                width: inherit;
+                height: pixCon(200, rem);
+                margin-bottom: pixCon(30, rem);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            &__body
+            {
+                padding: 0 pixCon(30, rem);
+            }
+                &__author
+                {
+                    margin-bottom: pixCon(12, rem);
+                    font-size: pixCon(10, rem);
+                    color: $grayishBlue
+                }
+                &__title
+                {
+                    margin-bottom: pixCon(12, rem);
+                    font-size: pixCon(15, rem);
+                }
+                &__blurb
+                {
+                    margin-bottom: pixCon(40, rem);
+                    font-size: pixCon(12, rem);
+                    color: $grayishBlue;
+                    text-overflow: ellipsis;
+                }
+}
+
+

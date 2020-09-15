@@ -1,0 +1,197 @@
+.header
+{
+    position: relative;
+    z-index: 2;
+
+    nav
+    {
+        padding: 1.0625rem 1.5rem;
+        background-color: white;
+
+        @include viewportUp(large)
+        {
+            padding: 1.0625rem pixCon(160, rem);
+        }
+    }
+
+    &__logo
+    {
+        width: 8.8125rem;
+        height: 1.375rem;
+    }
+    &__burger
+    {
+        span
+        {
+            width: pixCon(26, rem);
+            height: pixCon(2, rem);
+            display: block;
+            background-color: $darkBlue;
+            transition: transform .3s ease-in-out, transform-origin .3s ease-in-out, opacity .2s ease-in-out;
+            
+            &:not(:last-child)
+            {
+                margin-bottom: pixCon(3, rem);
+            }
+        }
+    }
+    &__links
+    {      
+        a
+        {
+            position: relative;
+            color: $grayishBlue;
+            font-size: pixCon(14, rem);
+            transition: color .2s ease-in-out;
+            &:not(:last-child)
+            {
+                margin-right:2rem;
+            }
+            &::before
+            {
+                content: "";
+                position: absolute;
+                right: pixCon(0, rem);
+                left: pixCon(0, rem);
+                bottom: pixCon(-30,rem);
+                height: pixCon(4, rem);
+                display: inline-block;
+                background: linear-gradient(to right, $limeGreen, $brightCyan);
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+            &:hover
+            {
+                color: $darkBlue;
+
+                &::before
+                {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .overlay
+    {
+        visibility: hidden;
+        position: fixed;
+        top: pixCon(56, rem);
+        right: pixCon(0, rem);
+        bottom: pixCon(0, rem);
+        left: pixCon(0, rem);
+        background-image: linear-gradient($darkBlue, transparent);
+        transition: visibility 300ms ease-in-out;
+    }
+    
+    &__menu
+    {   
+        visibility: hidden;
+        position: fixed;
+        height: pixCon(265, rem);
+        top: pixCon(80, rem);
+        right: pixCon(22, rem);
+        left: pixCon(22, rem);
+        padding: pixCon(34, rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $white;
+        border-radius: pixCon(4, rem);
+
+
+        a
+        {
+            visibility: hidden;
+            position: relative;
+            top: -100px;
+            font-size: $fontNormal;
+            letter-spacing: pixCon(1, rem);
+            color: $darkBlue;
+        }
+    }
+
+    //Hamburger Open Styles
+    &.open
+    {
+        .overlay
+        {
+            visibility: visible;
+            animation: fade-in 300ms ease-in-out forwards;
+        }
+        .header__burger
+        {
+            span
+            {
+                position: relative;
+            }
+            span:nth-of-type(1)
+            {
+                transform: rotate(45deg);
+                transform-origin: pixCon(6,rem) pixCon(3, rem);
+            }
+            span:nth-of-type(2)
+            {
+                opacity: 0;
+            }
+            span:nth-of-type(3)
+            {
+                transform: rotate(-45deg);
+                transform-origin: pixCon(8, rem) pixCon(-1, rem);
+            }  
+        }
+        .header__menu
+        {
+            visibility: visible;
+            animation: fade-in 300ms ease-in-out forwards;
+
+            a
+            {
+                animation: fade-in-in 300ms ease-in-out forwards;
+                visibility: visible;
+                top: 0px;
+            }
+
+            a:nth-child(1)
+            {
+                transition: top 700ms ease-in-out;
+            }
+            a:nth-child(2)
+            {
+                transition: top 600ms ease-in-out;
+            }
+            a:nth-child(3)
+            {
+                transition: top 500ms ease-in-out;
+            }
+            a:nth-child(4)
+            {
+                transition: top 400ms ease-in-out;
+            }
+            a:nth-child(5)
+            {
+                transition: top 300ms ease-in-out;
+            }
+        }
+    }
+    //Hamburger close
+    &.close
+    {
+        .overlay
+        {
+            visibility: hidden;
+            animation: fade-out 300ms ease-in-out forwards;
+        }
+        .header__menu
+        {
+            visibility: visible;
+            animation: fade-out 300ms ease-in-out forwards;
+
+            a
+            {
+                visibility: hidden;
+            }
+        }
+    }
+}

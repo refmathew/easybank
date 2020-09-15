@@ -1,0 +1,86 @@
+.hero-wrapper
+{
+    background-color: $veryLightGray;
+
+    .hero
+    {
+        
+        &__image
+        {
+            display: flex;
+            justify-content: center;
+            height: pixCon(260, rem);
+            background-image: url("../../images/bg-intro-mobile.svg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+
+            img
+            {
+                margin-top: pixCon(-165, rem);
+                max-width: 400px;
+                min-height: 425px;
+
+                @include viewportUp(medium) //hero.image img tablet view
+                {
+                    max-width: 800px;
+                }
+                @include viewportUp(large) //hero.image img desktop view
+                {
+                    position: absolute;
+                    margin-left: pixCon(200, rem);
+                    margin-top: pixCon(-100, rem);
+                    max-width: inherit;
+                    min-height: inherit;
+                }
+            }
+
+            @include viewportUp(medium) //hero.image img tablet view
+            {
+                height: 600px;
+            }
+            @include viewportUp(large) // hero.image desktop view
+            {
+                flex: 3;
+                order: 2;
+                height: inherit;
+                background-image: url('../../images/bg-intro-desktop.svg');
+                background-size: 170%;
+                background-repeat: no-repeat;
+                background-position: 14% 74%;
+            }
+        }
+        &__text
+        {
+            text-align: center;
+            padding: pixCon(40, rem) pixCon(30, rem);
+
+            p
+            {
+                margin: 0 0 pixCon(32, rem) 0;
+                line-height: pixCon(26, rem);
+            }
+            button
+            {
+                margin-bottom: pixCon(40, rem);      
+            }
+
+            @include viewportUp(large) //text desktop
+            {
+                flex: 2;
+                order: 1;
+                padding-left: pixCon(165, rem);
+                padding-right: pixCon(75, rem);
+                text-align: left;
+            }
+        }
+
+        @include viewportUp(large) //hero desktop
+        {
+            height: pixCon(655, rem);
+            display: flex;
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,158 @@
+*, *::before, *::after
+{
+    box-sizing: border-box;
+}
+html
+{
+    font-size: 100%;    
+    box-sizing: border-box;
+}
+body
+{
+    max-width: pixCon(1440, rem);
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 300;
+    color: $grayishBlue;
+    line-height: 1.3;
+    overflow-x: hidden;
+
+    &.disableScroll
+    {
+        overflow: hidden;
+    }
+
+    @include viewportUp(large)
+    {
+        font-size: $fontNormal;
+    }
+}
+
+h1, 
+h2, 
+h3,
+h3,
+h5,
+h6
+{
+    color: $darkBlue;
+    font-weight: 300;
+    margin: 0 0 pixCon(21, rem) 0;
+}
+
+h1
+{
+    font-size: pixCon(32, rem);
+    line-height: 1.1;
+
+    @include viewportUp(large)
+    {
+        font-size: $fontLarge;
+    }
+}
+
+h2
+{
+    font-size: pixCon(16, rem);
+
+    @include viewportUp(large)
+    {
+        font-size: pixCon(24, rem);
+    }
+}
+
+h6
+{
+    font-size: pixCon(28, rem);
+
+    @include viewportUp(large)
+    {
+        font-size: pixCon(38, rem);
+    }
+}
+
+p
+{
+    font-size: pixCon(13, rem);
+    @include viewportUp(large)
+    {
+        font-size: $fontNormal;
+    }
+}
+
+a, 
+a:visited,
+a:hover
+{
+    font-family: 'Public Sans', sans-serif;
+    text-decoration: none;
+}
+button
+{
+    position: relative;
+    background-image: linear-gradient(to right, $limeGreen, $brightCyan);
+    border: 0;
+    font-family: 'Public Sans', sans-serif;
+    font-size: $fontSmall;
+    color: $lightGrayishBlue;
+    cursor: pointer;
+    padding: .875rem 2.1875rem;
+    border-radius: pixCon(50, rem);
+    font-weight: 400;
+    transition: opacity 250ms ease-in-out;
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, .25);
+        border-radius: 40px;
+        opacity: 0;
+    }
+
+    &:hover::before
+        {
+            opacity: 1;
+        }
+}
+
+// Visibility
+.hide-for-mobile
+{
+    @include viewportDown(medium)
+    {
+        display: none;
+    }
+}
+.hide-for-desktop
+{
+    @include viewportUp(large)
+    {
+        display: none;
+    }
+}
+
+// Spacing
+
+// Flexbox styles
+.flex
+{
+    display: flex;
+
+    &-jc-sb
+    {
+      justify-content: space-between;  
+    }
+    &-jc-c
+    {
+        justify-content: center;
+    }
+    &-ai-c
+    {
+        align-items: center;
+    }
+}

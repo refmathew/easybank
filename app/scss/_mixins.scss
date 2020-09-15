@@ -1,0 +1,39 @@
+// breakpoints
+$viewportUp:
+(
+    "medium": "40em",
+    "large": "64em",
+    "xlarge": "87.5em"
+);
+
+$viewportDown:
+(
+    "small": "39.9375em",
+    "medium": "63.9375em",
+    "large": "97.5em"
+);
+
+@mixin viewportUp($size)
+{
+    @media(min-width: map-get($viewportUp , $size ))
+    {
+        @content;
+    }
+};
+
+@mixin  viewportDown($size) 
+{
+    @media (max-width: map-get($viewportDown, $size ))
+    {
+       @content;
+    }
+};
+
+
+// Pixel Conversion
+$basePixel: 16;
+
+@function pixCon($value, $unit)
+{
+    @return #{$value/ $basePixel}$unit;
+}

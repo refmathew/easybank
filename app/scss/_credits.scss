@@ -1,0 +1,24 @@
+.credits{
+    padding: pixCon(10, rem) pixCon(30 ,rem);
+    background-color: #f3f4f6;
+    text-align: center;
+
+    p{
+        font-size: pixCon(12, rem);
+        display:block;
+        margin: 0;
+
+        @include viewportUp(large){
+            display: inline-block;
+        }
+    }
+
+    a{
+        color: $darkBlue;
+        transition: color 150ms ease-in-out;
+    }
+
+    a:hover{
+        color: black;
+    }
+}
